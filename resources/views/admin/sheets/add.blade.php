@@ -44,8 +44,20 @@
                             <div class="col-md-3">
                                 <br>
                 				<label>Sheet Type</label><br>
-                				<input placeholder="Sheet Type" required="true" class="form-control input-text required-entry" name="sheet_type">
-                			</div>  
+                				
+                			  
+                        <select  name="sheet_type" class="form-select address-select col-md-12" title="">
+                					<option value="">Select Sheet Type</option>
+                          @foreach($categories as $category)
+
+                          <option value="{{$category->id}}" >{{$category->name}}</option>
+
+                          @endforeach
+                          
+                					
+                				</select>  
+                      
+                      </div>  
 
                             <div class="col-md-3">
                                 <br>

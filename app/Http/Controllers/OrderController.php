@@ -338,7 +338,7 @@ class OrderController extends Controller
     public function submit_order_new(request $request){
         //dd($request->all());
         $validatedData = $request->validate([
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif,cdr|max:2048'
         ]);
 
         $images=[];

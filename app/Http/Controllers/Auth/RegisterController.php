@@ -61,6 +61,8 @@ class RegisterController extends Controller
             'business_address' => ['required', 'string'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'gst' => ['required' 'string', 'min:15','unique:users'],
+            'pan' => ['required'],
             'gst_file' => ['required'],
             'pan_card_file' => ['required'],
         ]);
@@ -142,7 +144,7 @@ class RegisterController extends Controller
             $user->verified = '1';
             $user->save();
             if($user->verified==1){
-                return redirect('/login')->with('success','Your account has been verified successfully. Please login with your credentials.');
+                return redirect('/login')->with('success','Your Email has been verified successfully. Please wait for admin approval');
             }else{
                 
                 return redirect('/login')->with('error','You aren\'t verified.');

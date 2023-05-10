@@ -42,7 +42,6 @@ class LoginController extends Controller
                 return redirect('/login')->with('error','Your email is not verified. Check your inbox or spam & click on link to verify your account.');
 
             }
-
             if($user->status=="0"){
                 Auth::logout();
                 return redirect('/login')->with('error','Your Account is pending for Approval.');

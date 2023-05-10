@@ -56,13 +56,35 @@
                             <div class="col-md-2">
                                 <br>
                 				<label>Department</label><br>
-                				<input placeholder="Department" required="true" class="form-control input-text required-entry" name="department" value="{{$user->department}}">
-                			</div>
+                				
+                			  <select  name="department" class="form-select address-select col-md-12" title="">
+                					<option value="">Select Department</option>
+                          @foreach($departments as $department)
+
+                          <option value="{{$department->id}}" @if($user->department==$department->name) selected @endif>{{$department->name}}</option>
+
+                          @endforeach
+                          
+                					
+                				</select>
+                      
+                      </div>
 
                             <div class="col-md-3">
                                 <br>
                 				<label>Role</label><br>
-                				<input placeholder="Role" required="true" class="form-control input-text required-entry" name="role"  value="{{$user->role}}">
+                				
+
+                        <select  name="role" class="form-select address-select col-md-12" title="">
+                					<option value="">Select Role</option>
+                          @foreach($roles as $role)
+
+                          <option value="{{$role->role_name}}" @if($user->role==$role->role_name) selected @endif >{{$role->role_name}}</option>
+
+                          @endforeach
+                          
+                					
+                				</select>
                 			</div>
                 			
                 			

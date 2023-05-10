@@ -14,6 +14,7 @@ use App\Models\Department;
 use App\Models\MasterSheet;
 use App\Models\Job;
 use App\Models\JobAllotment;
+use App\Models\Categories;
 use Mail;
 use Validator;
 use DB;
@@ -276,12 +277,12 @@ class HomeController extends Controller
 
      public function employeeAdd()
     {
-        $usertypes = [
-            'admin' => 'Admin',
-            'customer' => 'Customer'
-        ];
+        $roles = Role::where('status','active')->get();
+        $departments = Department::where('status','active')->get();
         return view('admin.employee.add',[
-            'usertypes' => $usertypes
+            'roles' => $roles,
+            'departments' => $departments,
+
         ]);
     }
 
@@ -352,8 +353,11 @@ class HomeController extends Controller
     public function editEmployee($id)
     {
         $user=User::find($id);
+
+        $roles = Role::where('status','active')->get();
+        $departments = Department::where('status','active')->get();
         //dd($user);
-        return view('admin.employee.edit',compact('user'));
+        return view('admin.employee.edit',compact('user','roles','departments'));
     }
 
 
@@ -421,7 +425,7 @@ class HomeController extends Controller
         $user->business_address=$request->business_address;
         $user->gst=$request->gst;
         $user->pan=$request->pan;
-        $user->password=Hash::make($request->password);
+        //$user->password=Hash::make($request->password);
         $user->email_token = base64_encode($request->email);
         $user->type='customer';
         $user->verified=1;
@@ -454,8 +458,9 @@ class HomeController extends Controller
 
      public function sheetAdd()
     {
-        
-        return view('admin.sheets.add');
+
+        $categories=Categories::whereNULL('parent')->get();
+        return view('admin.sheets.add',compact('categories'));
     }
 
 
@@ -481,7 +486,8 @@ class HomeController extends Controller
     public function editSheet($id)
     {
         $sheet=MasterSheet::find($id);
-        return view('admin.sheets.edit',compact('sheet'));
+        $categories=Categories::whereNULL('parent')->get();
+        return view('admin.sheets.edit',compact('sheet','categories'));
     }
 
 

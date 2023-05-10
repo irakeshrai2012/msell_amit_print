@@ -47,6 +47,17 @@
                                 <br>
                 				<label>sheet_type</label><br>
                 				<input  name="sheet_type" Placehoder="sheet_type"  class="form-control input-text required-entry" required="true" title="" value="{{$sheet->sheet_type}}">
+
+                        <select  name="sheet_type" class="form-select address-select col-md-12" title="">
+                					<option value="">Select Sheet Type</option>
+                          @foreach($categories as $category)
+
+                          <option value="{{$category->name}}" @if($sheet->sheet_type==$category->name) selected @endif>{{$category->name}}</option>
+
+                          @endforeach
+                          
+                					
+                				</select>
                 			</div>
                             
                             <div class="col-md-2">
