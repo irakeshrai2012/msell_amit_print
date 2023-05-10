@@ -181,7 +181,8 @@
   </header>
   <!-- end header --> 
   <!-- Navbar -->
-  <nav>
+  
+  <nav >
     <div class="container">
       <div class="nav-inner"> 
         

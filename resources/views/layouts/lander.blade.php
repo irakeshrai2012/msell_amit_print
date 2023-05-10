@@ -27,7 +27,7 @@
 <!-- Google Fonts -->
 <link href='../../../css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 </head>
-<body class="cms-index-index">
+<body class="cms-index-index" style="overflow-x: hidden;">
     <div class="page">
         @php
             $user = Auth::user();
@@ -51,22 +51,6 @@
             @include('layouts.auth_menu')
         @else
             @include('layouts.menu')        
-        @endif
-
-        @if (\Session::has('success'))
-            <div class="alert alert-success">
-                
-                    <p>{!! \Session::get('success') !!}</p>
-                
-            </div>
-        @endif
-
-         @if (\Session::has('error'))
-            <div class="alert">
-                
-                    <p class="alert alert-danger text-center"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> {!! \Session::get('error') !!}</p>
-                
-            </div>
         @endif
         @yield('content')
     </div>

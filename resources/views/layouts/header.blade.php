@@ -122,7 +122,7 @@
               <input id="enable_module" value="1" type="hidden">
               <input class="effect_to_cart" value="1" type="hidden">
               <input class="title_shopping_cart" value="Go to shopping cart" type="hidden">
-            </div>  
+            </div>
             <form method="post" action ="{{route('logout')}}">
                 @csrf
                 <input title="logout" type="submit" value="Logout">
@@ -146,7 +146,8 @@
   </header>
   <!-- end header --> 
   <!-- Navbar -->
-  <nav>
+  <div class="container" style="margin-top: -23px;margin-bottom: 0px;padding: 0px 20px 0px 20px;">
+    <nav style="box-shadow: 0px 5px 15px 0px rgba(0.15326086956521656, 25.539258034026467, 70.50000000000001, 0.37);z-index: 999;border-radius: 16px;position: absolute;">
     <div class="container">
       <div class="nav-inner"> 
         
@@ -217,6 +218,7 @@
       </div>
     </div>
   </nav>
+  </div>
   <!-- end nav --> 
   <!-- Slider -->
   <script>

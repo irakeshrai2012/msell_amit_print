@@ -89,7 +89,8 @@
   </header>
   <!-- end header --> 
   <!-- Navbar -->
-  <nav>
+    <div class="container" style="margin-top: -23px;margin-bottom: 0px;padding: 0px 20px 0px 20px;">
+  <nav style="box-shadow: 0px 5px 15px 0px rgba(0.15326086956521656, 25.539258034026467, 70.50000000000001, 0.37);z-index: 999;border-radius: 16px;position: absolute;">
     <div class="container">
       <div class="nav-inner"> 
         
@@ -141,24 +142,25 @@
           <li class="level0 parent drop-menu"><a href="#"><span>Corporate</span> </a>
             <ul class="level1">
             
-              <li class="level1"> <a href="about_us.html"> <span>About us</span> </a> </li>
-              <li class="level1"><a href="team.html"><span>Core Team</span></a></li>
+              <li class="level1"> <a href="{{url('about_us')}}"> <span>About us</span> </a> </li>
+              <li class="level1"><a href="{{url('core_team')}}"><span>Core Team</span></a></li>
              
             </ul>
           </li>
-          <li class="level0 nav-5 parent"> <a href="service.html" class="level-top"> <span>All Services</span> </a>
+          <li class="level0 nav-5 parent"> <a href="{{url('services')}}" class="level-top"> <span>All Services</span> </a>
              
           </li>
      
-          <li class="level0 nav-5 parent"> <a class="level-top" href="grid.html"> <span>Join Us</span> </a>
+          <li class="level0 nav-5 parent"> <a class="level-top" href="{{url('login')}}"> <span>Join Us</span> </a>
            
           </li>
-          <li class="level0 nav-5 parent"><a href="grid.html"><span>Contact Us </span> </a>
+          <li class="level0 nav-5 parent"><a href="{{url('contact')}}"><span>Contact Us </span> </a>
           </li>
        
         </ul>
       </div>
     </div>
   </nav>
+  </div>
   <!-- end nav --> 
   <!-- Slider -->
