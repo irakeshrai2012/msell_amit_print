@@ -190,102 +190,61 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
         
     }
-    public function handleview(Request $request , $slug,$type =''){
+    public function handleview(Request $request , $slug){
+        
         $now_id = decrypt($slug);
-        //dd($type);
-        //dd( $now_id);
         $master_catg = Categories::find($now_id);
          $selected_parent=''; 
          $selected_subcategory='';
-        // if($master_catg->parent){
-        //     $selected_subcategory = Categories::find($master_catg->parent);
+        if($master_catg->parent){
+            $selected_subcategory = Categories::find($master_catg->parent);
 
-        //     $selected_parent = Categories::find($selected_subcategory->parent);
-        // }
+            $selected_parent = Categories::find($selected_subcategory->parent);
+        }
         
         $parents=[];
-        //$childs=[];
-        //$childs  =  Categories::where('parent' , $now_id) ->get();
+        $childs=[];
+        $childs  =  Categories::where('parent' , $now_id) ->get();
         $master_of_master=[];
 
-        $childs  =  Categories::whereNull('parent')->where('status' , 1)->pluck('name' ,  'id')->toArray();
-        //dd($childs);
-        $selected_product='';
+        if(empty($childs[0])){
 
-        if($type=="category"){
-
-        // serching if it has any product
-        $view = $this->heirarchy;
-        // $view = 'products/product_details_new';
-         $products = Products::where('category' , $now_id)
-                             ->where('status' , 1)
-                             ->get();
-
-
-        }else{
-
-         //   $view = $this->heirarchy;
-         $view = 'products/product_details_new';
-         $selected_product = Products::where('id' , $now_id)
-                             ->where('status' , 1)
-                             ->first();
-         //dd($selected_product->category);  
-         
-         $master_catg = Categories::find($selected_product->category);
-
-
-         $products = Products::where('category' , $selected_product->category)
-                             ->where('status' , 1)
-                             ->get();
-
-
-
-
-
-
-            
-        }                    
-
-        // if(empty($childs)){
-
-            //$parents  =  Categories::whereNull('parent')->where('status' , 1)->pluck('name' ,  'id')->toArray();
-            //$childs  =  Categories::where('parent' , $now_id) ->get();
-            // $childs  =  Categories::get();
+            $parents  =  Categories::whereNull('parent')->where('status' , 1)->pluck('name' ,  'id')->toArray();
+            $childs  =  Categories::where('parent' , $now_id) ->get();
             // serching if it has any product
-            // $view = 'products/product_details_new';
-            // $products = Products::where('category' , $now_id)
-            //                     ->where('status' , 1)
-            //                     ->get();
+            $view = 'products/product_details_new';
+            $products = Products::where('category' , $now_id)
+                                ->where('status' , 1)
+                                ->get();
             //getting sibblings of the category
-            // $master_sibblings = Categories::where('parent' , $master_catg->parent)
-            //                               ->where('status' , 1)
-            //                               ->pluck('name' ,  'id')
-            //                               ->toArray();
+            $master_sibblings = Categories::where('parent' , $master_catg->parent)
+                                          ->where('status' , 1)
+                                          ->pluck('name' ,  'id')
+                                          ->toArray();
                                           
-            // $master_of_master = Categories::where('id' , $master_catg->parent)
-            //                               ->first();
+            $master_of_master = Categories::where('id' , $master_catg->parent)
+                                          ->first();
             // dd($master_of_master , $master_catg );
             //getting sibblings of master of master
-            // $master_of_master_sibblings = Categories::where('parent' , $master_of_master->parent)
-            //                               ->where('status' , 1)
-            //                               ->pluck('name' ,  'id')
-            //                               ->toArray();            
-        // }
-        // else{
-        //     $view = $this->heirarchy;
-        // }
+            $master_of_master_sibblings = Categories::where('parent' , $master_of_master->parent)
+                                          ->where('status' , 1)
+                                          ->pluck('name' ,  'id')
+                                          ->toArray();            
+        }
+        else{
+            $view = $this->heirarchy;
+        }
         
         // if(empty($products[0])){
         //     $view = $this->heirarchy;
         // }
         return view($view , [
-            'data' => $products,
+            'data' => $childs,
             'catg' => $master_catg,
             'selected_parent'=>$selected_parent,
             'selected_subcategory'=>$selected_subcategory,
-            'selected_product'=>$selected_product?$selected_product:'',
             'id'=>$now_id,
-            'parents'=>$childs,
+            'parents'=>$parents,
             'master_catg'=>$master_catg,
             'products' => !empty($products) ? $products : [],
             'master_of_master' => !empty($master_of_master)?$master_of_master:[],

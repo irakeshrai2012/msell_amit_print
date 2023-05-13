@@ -127,8 +127,8 @@ Route::group(['middleware' => ['blockacess']], function () {
     Route::any('checkout' , 'CheckoutController@index');
     #Route::resource('Categories' , 'CategoryController');
     Route::get('script', 'CategoryController@script');
-    Route::get('Category/{slug}/{type}' , 'CategoryController@handleview');
-    Route::get('ProductsDetails/{slug}/{type}' , 'ProductController@handleview');
+    Route::get('Category/{slug}' , 'CategoryController@handleview');
+    Route::get('ProductsDetails/{slug}' , 'ProductController@handleview');
     Route::get('Order-Summary-Report' , 'Admin\ReportController@orders');
     Route::resource('Tax-Master' , 'Admin\TaxMasterController');
     Route::get('tax_master_delete/{id}' , 'Admin\TaxMasterController@destroy');

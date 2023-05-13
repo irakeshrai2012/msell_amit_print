@@ -25,18 +25,18 @@
               @if(!empty($data))
                 @foreach($data as $key => $value)
                 
-                <a href="{{url('Category' ,['slug'=>encrypt($value->id),'type'=>'product'])}}">
+                <a href="{{url('Category' ,['slug'=>encrypt($value->id)])}}">
                   <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6" style="display: flex;justify-content: center;align-items: center;">
                     <div class="col-item">
                       <div class="">
     
-                           <a class="product-image" href="{{url('Category' ,['slug'=>encrypt($value->id),'type'=>'product'])}}"> 
+                           <a class="product-image" href="{{url('Category' ,['slug'=>encrypt($value->id)])}}"> 
                             <img alt="a" class="img-responsive" src="{{asset($value->image_name)}}"> 
                            </a>
                       </div>
                       <div class="info" style="border-top: 1px solid #c4c4d4;">
                         <div class="info-inner">
-                          <div class="item-title"> <a href="{{url('Category',['slug'=>encrypt($value->id),'type'=>'product'])}}">{{ !empty($value->name) ? $value->name : '' }}<br>
+                          <div class="item-title"> <a href="{{url('Category',['slug'=>encrypt($value->id)])}}">{{ !empty($value->name) ? $value->name : '' }}<br>
                                     <span style="color:orange;"> {{ !empty($value->desc) ?$value->desc  : ''}} </span></a> </div>
                           
                         <div class="clearfix"> </div>
@@ -49,17 +49,17 @@
               @endif
               @if(!empty($products))
                 @foreach($products as $key => $value)
-                <a href="{{url('ProductsDetails' , ['slug'=>encrypt($value->id),'type'=>'product'])}}">
+                <a href="{{url('ProductsDetails' , ['slug'=>encrypt($value->id)])}}">
                   <li class="item col-lg-4 col-md-4 col-sm-6 col-xs-6" style="display: flex;justify-content: center;align-items: center;">
                     <div class="col-item">
                       <div class="">
-                           <a class="product-image" href="{{url('ProductsDetails' ,['slug'=>encrypt($value->id),'type'=>'product'])}}"> 
+                           <a class="product-image" href="{{url('ProductsDetails' ,['slug'=>encrypt($value->id)])}}"> 
                            <img alt="a" class="img-responsive" src="{{ !empty( $value->image_name ) ? asset($value->image_name) : '' }}">
                            </a>
                       </div>  
                       <div class="info" style="border-top: 1px solid #c4c4d4;">
                         <div class="info-inner">
-                          <div class="item-title"> <a href="{{url('ProductsDetails' ,['slug'=>encrypt($value->id),'type'=>'product'])}}">{{ !empty($value->name) ? $value->name : '' }}<br>
+                          <div class="item-title"> <a href="{{url('ProductsDetails' ,['slug'=>encrypt($value->id)])}}">{{ !empty($value->name) ? $value->name : '' }}<br>
                                     <span style="color:orange;">RS.{{ !empty($value->price) ?$value->price  : ''}} </span></a> </div>
                           
                         <div class="clearfix"> </div>

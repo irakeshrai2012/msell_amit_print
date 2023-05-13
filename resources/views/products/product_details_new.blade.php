@@ -55,20 +55,20 @@
                     <div class="col-md-12">
                         <div class="row">
                            
-                        <div class="col-md-12">
+                        <div class="col-md-4">
                                 <label class="form-label">Category</label>
                                 <select id="parent" onchange="change_parents()" class="form-control">
                                     <option value="">Select</option>            
                                     @if(!empty($parents))
                                         @foreach($parents as $key => $value)
-                                            <option value="{{$key}}" @if($selected_product) @if($selected_product->category==$key) selected @endif @endif>{{$value}}</option>
+                                            <option value="{{$key}}" @if($selected_parent) @if($selected_parent->id==$key) selected @endif @endif>{{$value}}</option>
                                         @endforeach
                                     @endif                                    
                                 </select>
                             </div>
                             
 
-                            <!-- <div class="col-md-4">
+                            <div class="col-md-4">
                                 <label class="form-label">Sub Category</label>
                                 <select id="category" onchange="change_items()" class="form-control">
                                     <option value="">Select</option>            
@@ -91,7 +91,7 @@
                                         @endforeach
                                     @endif
                                 </select>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -101,7 +101,7 @@
                             <option value="">Select</option>
                             @if(!empty($products))
                                 @foreach($products as $prod_key => $product)
-                                    <option value="{{$product->id}}" @if($selected_product->id==$product->id) selected @endif  >{{$product->name}}</option>
+                                    <option value="{{$product->id}}"  >{{$product->name}}</option>
                                 @endforeach
                             @endif
                         </select>
@@ -205,7 +205,7 @@
 
     var total_order_amount=0;
 
-    get_prod_info({{$selected_product->id}});
+   
 
     // function change_parents(){
     //     var master = $("#parent").val();

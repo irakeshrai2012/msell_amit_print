@@ -15,7 +15,7 @@
                   @method('GET')
                   @csrf
                   <div class="col-md-6">
-                       <img style="width:100%;" class="zoomImg" src="images/New Project.png">
+                      <img style="width:100%;" class="zoomImg" src="images/New Project.png">
                       <p>  Dispatch Time :<br>
                        <span style="color:red;"> 4 - 7 working days</span><br><br>
                         
@@ -36,7 +36,7 @@
                         <label for="exampleFormControlSelect1">Select Product</label>
                         <select class="form-control" id="exampleFormControlSelect1">
                             <option>Choose Product</option>
-                            <option value="red">Gold Foil Cards + Die Cut</option>
+                          <option value="red">Gold Foil Cards + Die Cut</option>
                             <option value="green">Gold Foil Cards</option>
                         </select>
                     </div>
